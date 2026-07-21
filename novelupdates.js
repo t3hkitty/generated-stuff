@@ -2,22 +2,20 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates-webnovel';
 NovelUpdates.name = 'NovelUpdates Webnovels';
-NovelUpdates.version = '1.1.3';
+NovelUpdates.version = '1.1.4';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
 NovelUpdates.contentType = 'books';
 
 NovelUpdates.search = async function(query) {
-    return {
-        results: [
-            {
-                title: 'Webnovel Result: ' + query,
-                url: 'https://www.novelupdates.com/?s=' + encodeURIComponent(query),
-                coverUrl: 'https://www.novelupdates.com/favicon.ico',
-                summary: 'Webnovel source entry.'
-            }
-        ]
-    };
+    return [
+        {
+            title: 'Webnovel Result: ' + query,
+            url: 'https://www.novelupdates.com/?s=' + encodeURIComponent(query),
+            coverUrl: 'https://www.novelupdates.com/favicon.ico',
+            summary: 'Webnovel source entry.'
+        }
+    ];
 };
 
 __cinderExport = NovelUpdates;
