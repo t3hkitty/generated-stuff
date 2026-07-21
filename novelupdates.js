@@ -2,7 +2,7 @@ var NovelUpdatesSource = {};
 
 NovelUpdatesSource.id = 'novelupdates-webnovel';
 NovelUpdatesSource.name = 'NovelUpdates Webnovels';
-NovelUpdatesSource.version = '2.0.0';
+NovelUpdatesSource.version = '2.1.0';
 NovelUpdatesSource.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdatesSource.baseUrl = 'https://www.novelupdates.com';
 NovelUpdatesSource.contentType = 'webnovels';
@@ -17,7 +17,7 @@ NovelUpdatesSource.capabilities = {
     manga: false
 };
 
-NovelUpdatesSource.settings = [
+NovelUpdatesSource.preferences = [
     {
         key: 'auth_cookies',
         name: 'Desktop Session Cookies',
