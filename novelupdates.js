@@ -2,7 +2,7 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates';
 NovelUpdates.name = 'NovelUpdates';
-NovelUpdates.version = '1.0.4';
+NovelUpdates.version = '1.0.5';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
 
@@ -19,24 +19,27 @@ NovelUpdates.search = async function(query) {
     }
 
     const html = await res.text();
-    const document = new DOMParser().parseFromString(html, 'text/html');
-    const elements = document.querySelectorAll('div.search_block_content');
-    
     const results = [];
-    for (const el of elements) {
-        const titleEl = el.querySelector('div.search_title > a');
-        const imgEl = el.querySelector('div.search_img_nick > img');
-        const excerptEl = el.querySelector('div.search_excerpt');
+    
+    const blockRegex = /<div class="search_block_content">([\s\S]*?)<\/div>\s*<\/div>/g;
+    let match;
+    
+    while ((match = blockRegex.exec(html)) !== null) {
+        const block = match[1];
+        const titleMatch = block.match(/<div class="search_title">\s*<a href="([^"]+)">([^<]+)<\/a>/);
+        const imgMatch = block.match(/<div class="search_img_nick">\s*<img src="([^"]+)"/);
+        const excerptMatch = block.match(/<div class="search_excerpt">([\s\S]*?)<\/div>/);
 
-        if (titleEl) {
+        if (titleMatch) {
             results.push({
-                name: titleEl.textContent?.trim() || '',
-                url: titleEl.getAttribute('href') || '',
-                coverUrl: imgEl?.getAttribute('src') || '',
-                summary: excerptEl?.textContent?.trim() || ''
+                name: titleMatch[2].trim(),
+                url: titleMatch[1],
+                coverUrl: imgMatch ? imgMatch[1] : '',
+                summary: excerptMatch ? excerptMatch[1].replace(/<[^>]*>/g, '').trim() : ''
             });
         }
     }
+
     return { results };
 };
 
