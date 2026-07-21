@@ -4,11 +4,20 @@
     {
       "id": "novelupdates-webnovel",
       "name": "NovelUpdates Webnovels",
-      "version": "1.1.6",
+      "version": "1.2.1",
       "description": "NovelUpdates metadata and web fiction extension",
       "contentType": "webnovels",
       "scriptUrl": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/novelupdates.js",
       "icon": "https://www.novelupdates.com/favicon.ico"
+    },
+    {
+      "id": "fucknovelpia-webnovel",
+      "name": "Novelpia Alt Source",
+      "version": "1.0.0",
+      "description": "Alternative webnovel parsing for protected archives",
+      "contentType": "webnovels",
+      "scriptUrl": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/fucknovelpia.js",
+      "icon": "https://novelpia.com/favicon.ico"
     }
   ]
 }
