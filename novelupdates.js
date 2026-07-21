@@ -1,7 +1,7 @@
 export default {
     id: 'novelupdates',
     name: 'NovelUpdates',
-    version: '1.0.1',
+    version: '1.0.2',
     icon: 'https://www.novelupdates.com/favicon.ico',
     baseUrl: 'https://www.novelupdates.com',
 
