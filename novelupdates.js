@@ -5,16 +5,16 @@ export default {
     icon: 'https://www.novelupdates.com/favicon.ico',
     baseUrl: 'https://www.novelupdates.com',
 
-    async login() {
-        return await this.client.webViewLogin({
+    async login(client) {
+        return await client.webViewLogin({
             url: 'https://www.novelupdates.com/login.php',
             title: 'Login to NovelUpdates',
             checkUrl: 'https://www.novelupdates.com/mypage.php'
         });
     },
 
-    async search(query) {
-        const res = await this.client.get(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
+    async search(client, query) {
+        const res = await client.get(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
         
         if (res.status === 403) {
             throw new Error('Cloudflare block detected. Please log in via extension settings.');
