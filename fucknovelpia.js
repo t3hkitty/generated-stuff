@@ -2,7 +2,7 @@
     var FuckNovelpia = {
         id: 'fucknovelpia-webnovel',
         name: 'Novelpia Alt Source',
-        version: '1.2.0',
+        version: '1.2.1',
         icon: 'https://novelpia.com/favicon.ico',
         baseUrl: 'https://novelpia.com',
         contentType: 'webnovels',
@@ -19,10 +19,12 @@
         search: async function(query) {
             return [
                 {
-                    id: 'np-1',
+                    id: 'np-' + encodeURIComponent(query),
+                    name: 'Novelpia Result: ' + query,
                     title: 'Novelpia Result: ' + query,
                     url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
                     coverUrl: 'https://novelpia.com/favicon.ico',
+                    cover: 'https://novelpia.com/favicon.ico',
                     summary: 'Direct sandbox injection successful for query: ' + query
                 }
             ];
