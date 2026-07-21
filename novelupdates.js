@@ -1,7 +1,7 @@
 function NovelUpdatesSource() {
     this.id = 'novelupdates-webnovel';
     this.name = 'NovelUpdates Webnovels';
-    this.version = '1.3.1';
+    this.version = '1.3.2';
     this.icon = 'https://www.novelupdates.com/favicon.ico';
     this.baseUrl = 'https://www.novelupdates.com';
     this.contentType = 'webnovels';
