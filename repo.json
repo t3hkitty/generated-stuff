@@ -1,0 +1,15 @@
+{
+  "name": "Custom Repositories",
+  "extensions": [
+    {
+      "id": "novelupdates",
+      "name": "NovelUpdates",
+      "version": "1.0.1",
+      "lang": "en",
+      "nsfw": 0,
+      "type": "source",
+      "url": "https://raw.githubusercontent.com//t3hkitty/generated-stuff/main/novelupdates.js",
+      "icon": "https://www.novelupdates.com/favicon.ico"
+    }
+  ]
+}
