@@ -2,14 +2,14 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates-v2';
 NovelUpdates.name = 'NovelUpdates V2';
-NovelUpdates.version = '1.0.6';
+NovelUpdates.version = '1.0.7';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
 NovelUpdates.contentType = 'books';
 
 NovelUpdates.search = async function(query) {
-    const res = await fetch(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
-    const html = await res.text();
+    const res = await this.client.get(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
+    const html = res.data || res.body || '';
     const results = [];
     
     const blockRegex = /<div class="search_block_content">([\s\S]*?)<\/div>\s*<\/div>/g;
