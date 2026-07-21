@@ -2,26 +2,24 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates';
 NovelUpdates.name = 'NovelUpdates';
-NovelUpdates.version = '1.0.3';
+NovelUpdates.version = '1.0.4';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
 
-NovelUpdates.login = async function() {
-    return await this.webViewLogin({
-        url: 'https://www.novelupdates.com/login.php',
-        title: 'Login to NovelUpdates',
-        checkUrl: 'https://www.novelupdates.com/mypage.php'
-    });
-};
-
 NovelUpdates.search = async function(query) {
-    const res = await this.request(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
+    const res = await fetch(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`, {
+        method: 'GET',
+        headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
+        }
+    });
     
     if (res.status === 403) {
-        throw new Error('Cloudflare block detected. Please log in via extension settings.');
+        throw new Error('Cloudflare block detected.');
     }
 
-    const document = new DOMParser().parseFromString(res.body, 'text/html');
+    const html = await res.text();
+    const document = new DOMParser().parseFromString(html, 'text/html');
     const elements = document.querySelectorAll('div.search_block_content');
     
     const results = [];
