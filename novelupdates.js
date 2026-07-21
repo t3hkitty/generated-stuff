@@ -2,21 +2,14 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates';
 NovelUpdates.name = 'NovelUpdates';
-NovelUpdates.version = '1.0.5';
+NovelUpdates.version = '1.0.6';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
 NovelUpdates.contentType = 'books';
 
-NovelUpdates.search = async function(query, page) {
-    // Access the network through Cinder's bound client instance
-    const response = await client.fetch(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`, {
-        method: 'GET',
-        headers: {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
-        }
-    });
-
-    const html = await response.text();
+NovelUpdates.search = async function(query) {
+    const res = await fetch(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
+    const html = await res.text();
     const results = [];
     
     const blockRegex = /<div class="search_block_content">([\s\S]*?)<\/div>\s*<\/div>/g;
