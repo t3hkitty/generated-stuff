@@ -1,21 +1,20 @@
-export default class NovelUpdates {
-    constructor() {
-        this.id = 'novelupdates';
-        this.name = 'NovelUpdates';
-        this.baseUrl = 'https://www.novelupdates.com';
-        this.icon = 'https://www.novelupdates.com/favicon.ico';
-    }
+export default {
+    id: 'novelupdates',
+    name: 'NovelUpdates',
+    version: '1.0.1',
+    icon: 'https://www.novelupdates.com/favicon.ico',
+    baseUrl: 'https://www.novelupdates.com',
 
     async login() {
         return await this.client.webViewLogin({
-            url: `${this.baseUrl}/login.php`,
+            url: 'https://www.novelupdates.com/login.php',
             title: 'Login to NovelUpdates',
-            checkUrl: `${this.baseUrl}/mypage.php`
+            checkUrl: 'https://www.novelupdates.com/mypage.php'
         });
-    }
+    },
 
     async search(query) {
-        const res = await this.client.get(`${this.baseUrl}/?s=${encodeURIComponent(query)}`);
+        const res = await this.client.get(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`);
         
         if (res.status === 403) {
             throw new Error('Cloudflare block detected. Please log in via extension settings.');
@@ -41,4 +40,4 @@ export default class NovelUpdates {
         }
         return { results };
     }
-}
+};
