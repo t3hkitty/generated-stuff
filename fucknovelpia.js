@@ -1,33 +1,60 @@
 var FuckNovelpia = {};
 
-FuckNovelpia.id = 'fucknovelpia-webnovel';
-FuckNovelpia.name = 'Novelpia Alt Source';
-FuckNovelpia.version = '1.0.0';
+FuckNovelpia.id = 'fucknovelpia-hybrid';
+FuckNovelpia.name = 'Novelpia Hybrid Source';
+FuckNovelpia.version = '1.1.0';
 FuckNovelpia.icon = 'https://novelpia.com/favicon.ico';
 FuckNovelpia.baseUrl = 'https://novelpia.com';
-FuckNovelpia.contentType = 'webnovels';
+FuckNovelpia.contentType = 'books'; // Broad category to satisfy both ePub and text views
 
 FuckNovelpia.capabilities = {
     search: true,
     discover: false,
-    download: false,
-    resolve: false,
-    searchDownloads: false,
-    bookChapters: true,
+    download: true,       // Enables direct file/ePub downloading
+    resolve: true,        // Allows handling password-protected links or zips
+    searchDownloads: true,
+    bookChapters: true,   // Enables webnovel chapter parsing mode
     manga: false
 };
 
-FuckNovelpia.search = async function(query) {
+FuckNovelpia.search = async function(query, page) {
     return [
         {
-            id: 'sample-novelpia-1',
-            name: 'Target Result: ' + query,
-            title: 'Target Result: ' + query,
+            id: 'hybrid-sample-1',
+            title: 'Hybrid Result: ' + query,
             url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
-            cover: 'https://novelpia.com/favicon.ico',
-            summary: 'Protected archive payload mapping for ' + query
+            coverUrl: 'https://novelpia.com/favicon.ico',
+            summary: 'Dual-mode payload supporting ePub download and webnovel chapters.'
         }
     ];
+};
+
+FuckNovelpia.resolve = async function(item) {
+    // Intercepts direct downloads to handle custom archive/password logic when the unzip update drops
+    return {
+        url: item.url,
+        filename: 'novelpia_download.epub',
+        headers: {
+            'User-Agent': 'CinderReader/1.0'
+        }
+    };
+};
+
+FuckNovelpia.getBookChapters = async function(bookId) {
+    return [
+        {
+            id: 'ch-1',
+            name: 'Chapter 1: Serialized Stream',
+            url: 'https://novelpia.com/'
+        }
+    ];
+};
+
+FuckNovelpia.getBookChapter = async function(chapterId) {
+    return {
+        title: 'Chapter 1: Serialized Stream',
+        content: '<p>Hybrid text rendering pipeline active.</p>'
+    };
 };
 
 __cinderExport = FuckNovelpia;
