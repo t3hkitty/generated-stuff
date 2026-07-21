@@ -1,7 +1,7 @@
 var NovelUpdates = {};
 
-NovelUpdates.id = 'novelupdates';
-NovelUpdates.name = 'NovelUpdates';
+NovelUpdates.id = 'novelupdates-v2';
+NovelUpdates.name = 'NovelUpdates V2';
 NovelUpdates.version = '1.0.6';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
