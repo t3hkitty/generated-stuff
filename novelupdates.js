@@ -2,23 +2,30 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates';
 NovelUpdates.name = 'NovelUpdates';
-NovelUpdates.version = '1.0.5';
+NovelUpdates.version = '1.0.4';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
+NovelUpdates.contentType = 'books';
+NovelUpdates.capabilities = {
+    search: true,
+    discover: false,
+    download: false,
+    resolve: false,
+    searchDownloads: false,
+    bookChapters: false,
+    manga: false
+};
 
-NovelUpdates.search = async function(query) {
-    const res = await fetch(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`, {
+NovelUpdates.search = async function(query, page) {
+    // Use Cinder's built-in global request/network handler instead of window fetch
+    const response = await request(`https://www.novelupdates.com/?s=${encodeURIComponent(query)}`, {
         method: 'GET',
         headers: {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'
         }
     });
-    
-    if (res.status === 403) {
-        throw new Error('Cloudflare block detected.');
-    }
 
-    const html = await res.text();
+    const html = response.body || response.data || response;
     const results = [];
     
     const blockRegex = /<div class="search_block_content">([\s\S]*?)<\/div>\s*<\/div>/g;
@@ -32,15 +39,17 @@ NovelUpdates.search = async function(query) {
 
         if (titleMatch) {
             results.push({
-                name: titleMatch[2].trim(),
+                id: titleMatch[1],
+                title: titleMatch[2].trim(),
+                cover: imgMatch ? imgMatch[1] : '',
                 url: titleMatch[1],
-                coverUrl: imgMatch ? imgMatch[1] : '',
-                summary: excerptMatch ? excerptMatch[1].replace(/<[^>]*>/g, '').trim() : ''
+                source: 'NovelUpdates',
+                format: 'epub'
             });
         }
     }
 
-    return { results };
+    return results;
 };
 
 __cinderExport = NovelUpdates;
