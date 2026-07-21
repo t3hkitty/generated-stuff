@@ -1,60 +1,53 @@
-var FuckNovelpia = {};
+(function() {
+    var FuckNovelpia = {
+        id: 'fucknovelpia-webnovel',
+        name: 'Novelpia Alt Source',
+        version: '1.2.0',
+        icon: 'https://novelpia.com/favicon.ico',
+        baseUrl: 'https://novelpia.com',
+        contentType: 'webnovels',
+        
+        capabilities: {
+            search: true,
+            discover: false,
+            download: true,
+            resolve: true,
+            bookChapters: true,
+            manga: false
+        },
 
-FuckNovelpia.id = 'fucknovelpia-hybrid';
-FuckNovelpia.name = 'Novelpia Hybrid Source';
-FuckNovelpia.version = '1.1.0';
-FuckNovelpia.icon = 'https://novelpia.com/favicon.ico';
-FuckNovelpia.baseUrl = 'https://novelpia.com';
-FuckNovelpia.contentType = 'books'; // Broad category to satisfy both ePub and text views
+        search: async function(query) {
+            return [
+                {
+                    id: 'np-1',
+                    title: 'Novelpia Result: ' + query,
+                    url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
+                    coverUrl: 'https://novelpia.com/favicon.ico',
+                    summary: 'Direct sandbox injection successful for query: ' + query
+                }
+            ];
+        },
 
-FuckNovelpia.capabilities = {
-    search: true,
-    discover: false,
-    download: true,       // Enables direct file/ePub downloading
-    resolve: true,        // Allows handling password-protected links or zips
-    searchDownloads: true,
-    bookChapters: true,   // Enables webnovel chapter parsing mode
-    manga: false
-};
+        getBookChapters: async function(bookId) {
+            return [
+                {
+                    id: 'ch-1',
+                    name: 'Chapter 1: Initialized Stream',
+                    url: 'https://novelpia.com/'
+                }
+            ];
+        },
 
-FuckNovelpia.search = async function(query, page) {
-    return [
-        {
-            id: 'hybrid-sample-1',
-            title: 'Hybrid Result: ' + query,
-            url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
-            coverUrl: 'https://novelpia.com/favicon.ico',
-            summary: 'Dual-mode payload supporting ePub download and webnovel chapters.'
-        }
-    ];
-};
-
-FuckNovelpia.resolve = async function(item) {
-    // Intercepts direct downloads to handle custom archive/password logic when the unzip update drops
-    return {
-        url: item.url,
-        filename: 'novelpia_download.epub',
-        headers: {
-            'User-Agent': 'CinderReader/1.0'
+        getBookChapter: async function(chapterId) {
+            return {
+                title: 'Chapter 1: Initialized Stream',
+                content: '<p>Payload container ready for password-protected extraction routines.</p>'
+            };
         }
     };
-};
 
-FuckNovelpia.getBookChapters = async function(bookId) {
-    return [
-        {
-            id: 'ch-1',
-            name: 'Chapter 1: Serialized Stream',
-            url: 'https://novelpia.com/'
-        }
-    ];
-};
-
-FuckNovelpia.getBookChapter = async function(chapterId) {
-    return {
-        title: 'Chapter 1: Serialized Stream',
-        content: '<p>Hybrid text rendering pipeline active.</p>'
-    };
-};
-
-__cinderExport = FuckNovelpia;
+    if (typeof __cinderExport !== 'undefined') {
+        __cinderExport = FuckNovelpia;
+    }
+    return FuckNovelpia;
+})();
