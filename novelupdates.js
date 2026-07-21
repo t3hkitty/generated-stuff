@@ -1,4 +1,4 @@
-import { Client, LoadResponse } from '@cinder/types';
+import { Client } from '@cinder/types';
 
 export default class NovelUpdates extends Client {
     id = 'novelupdates';
@@ -6,16 +6,15 @@ export default class NovelUpdates extends Client {
     baseUrl = 'https://www.novelupdates.com';
     icon = 'https://www.novelupdates.com/favicon.ico';
 
-    async login(): Promise<boolean> {
-        const loggedIn = await this.client.webViewLogin({
+    async login() {
+        return await this.client.webViewLogin({
             url: `${this.baseUrl}/login.php`,
             title: 'Login to NovelUpdates',
             checkUrl: `${this.baseUrl}/mypage.php`
         });
-        return loggedIn;
     }
 
-    async search(query: string): Promise<LoadResponse> {
+    async search(query) {
         const res = await this.client.get(`${this.baseUrl}/?s=${encodeURIComponent(query)}`);
         
         if (res.status === 403) {
