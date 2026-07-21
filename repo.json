@@ -5,11 +5,9 @@
       "id": "novelupdates",
       "name": "NovelUpdates",
       "version": "1.0.1",
-      "lang": "en",
-      "nsfw": false,
-      "type": "source",
-      "sources": ["en"],
-      "code": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/novelupdates.js",
+      "description": "NovelUpdates metadata and web fiction extension",
+      "contentType": "books",
+      "scriptUrl": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/novelupdates.js",
       "icon": "https://www.novelupdates.com/favicon.ico"
     }
   ]
