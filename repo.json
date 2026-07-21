@@ -2,8 +2,8 @@
   "name": "Custom Repositories",
   "extensions": [
     {
-      "id": "novelupdates",
-      "name": "NovelUpdates",
+      "id": "novelupdates-v2",
+      "name": "NovelUpdates V2",
       "version": "1.0.6",
       "description": "NovelUpdates metadata and web fiction extension",
       "contentType": "books",
