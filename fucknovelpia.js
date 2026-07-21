@@ -1,55 +1,49 @@
-(function() {
-    var FuckNovelpia = {
-        id: 'fucknovelpia-webnovel',
-        name: 'Novelpia Alt Source',
-        version: '1.2.1',
-        icon: 'https://novelpia.com/favicon.ico',
-        baseUrl: 'https://novelpia.com',
-        contentType: 'webnovels',
-        
-        capabilities: {
-            search: true,
-            discover: false,
-            download: true,
-            resolve: true,
-            bookChapters: true,
-            manga: false
-        },
-
-        search: async function(query) {
-            return [
-                {
-                    id: 'np-' + encodeURIComponent(query),
-                    name: 'Novelpia Result: ' + query,
-                    title: 'Novelpia Result: ' + query,
-                    url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
-                    coverUrl: 'https://novelpia.com/favicon.ico',
-                    cover: 'https://novelpia.com/favicon.ico',
-                    summary: 'Direct sandbox injection successful for query: ' + query
-                }
-            ];
-        },
-
-        getBookChapters: async function(bookId) {
-            return [
-                {
-                    id: 'ch-1',
-                    name: 'Chapter 1: Initialized Stream',
-                    url: 'https://novelpia.com/'
-                }
-            ];
-        },
-
-        getBookChapter: async function(chapterId) {
-            return {
-                title: 'Chapter 1: Initialized Stream',
-                content: '<p>Payload container ready for password-protected extraction routines.</p>'
-            };
-        }
+function FuckNovelpiaSource() {
+    this.id = 'fucknovelpia-webnovel';
+    this.name = 'Novelpia Alt Source';
+    this.version = '1.3.0';
+    this.icon = 'https://novelpia.com/favicon.ico';
+    this.baseUrl = 'https://novelpia.com';
+    this.contentType = 'webnovels';
+    
+    this.capabilities = {
+        search: true,
+        discover: false,
+        download: true,
+        resolve: true,
+        bookChapters: true,
+        manga: false
     };
+}
 
-    if (typeof __cinderExport !== 'undefined') {
-        __cinderExport = FuckNovelpia;
-    }
-    return FuckNovelpia;
-})();
+FuckNovelpiaSource.prototype.search = async function(query) {
+    return [
+        {
+            id: 'np-' + encodeURIComponent(query),
+            name: 'Novelpia Result: ' + query,
+            title: 'Novelpia Result: ' + query,
+            url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
+            coverUrl: 'https://novelpia.com/favicon.ico',
+            summary: 'Constructor prototype mapping for query: ' + query
+        }
+    ];
+};
+
+FuckNovelpiaSource.prototype.getBookChapters = async function(bookId) {
+    return [
+        {
+            id: 'ch-1',
+            name: 'Chapter 1: Protected Archive',
+            url: 'https://novelpia.com/'
+        }
+    ];
+};
+
+FuckNovelpiaSource.prototype.getBookChapter = async function(chapterId) {
+    return {
+        title: 'Chapter 1: Protected Archive',
+        content: '<p>Decrypted text payload container ready for password-protected extraction.</p>'
+    };
+};
+
+__cinderExport = new FuckNovelpiaSource();
