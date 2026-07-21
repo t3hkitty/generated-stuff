@@ -1,10 +1,10 @@
-import { Client } from '@cinder/types';
-
-export default class NovelUpdates extends Client {
-    id = 'novelupdates';
-    name = 'NovelUpdates';
-    baseUrl = 'https://www.novelupdates.com';
-    icon = 'https://www.novelupdates.com/favicon.ico';
+export default class NovelUpdates {
+    constructor() {
+        this.id = 'novelupdates';
+        this.name = 'NovelUpdates';
+        this.baseUrl = 'https://www.novelupdates.com';
+        this.icon = 'https://www.novelupdates.com/favicon.ico';
+    }
 
     async login() {
         return await this.client.webViewLogin({
