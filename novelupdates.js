@@ -2,10 +2,10 @@ var NovelUpdates = {};
 
 NovelUpdates.id = 'novelupdates-webnovel';
 NovelUpdates.name = 'NovelUpdates Webnovels';
-NovelUpdates.version = '1.1.5';
+NovelUpdates.version = '1.1.6';
 NovelUpdates.icon = 'https://www.novelupdates.com/favicon.ico';
 NovelUpdates.baseUrl = 'https://www.novelupdates.com';
-NovelUpdates.contentType = 'books';
+NovelUpdates.contentType = 'webnovels';
 
 NovelUpdates.search = async function(query) {
     return [
