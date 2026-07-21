@@ -1,7 +1,7 @@
 function FuckNovelpiaSource() {
     this.id = 'fucknovelpia-webnovel';
     this.name = 'Novelpia Alt Source';
-    this.version = '1.3.0';
+    this.version = '1.3.2';
     this.icon = 'https://novelpia.com/favicon.ico';
     this.baseUrl = 'https://novelpia.com';
     this.contentType = 'webnovels';
