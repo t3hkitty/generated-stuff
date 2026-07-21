@@ -8,6 +8,7 @@
       "lang": "en",
       "nsfw": false,
       "type": "source",
+      "sources": ["en"],
       "code": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/novelupdates.js",
       "icon": "https://www.novelupdates.com/favicon.ico"
     }
