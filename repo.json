@@ -4,7 +4,7 @@
     {
       "id": "novelupdates-webnovel",
       "name": "NovelUpdates Webnovels",
-      "version": "1.2.1",
+      "version": "1.3.2",
       "description": "NovelUpdates metadata and web fiction extension",
       "contentType": "webnovels",
       "scriptUrl": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/novelupdates.js",
@@ -13,7 +13,7 @@
     {
       "id": "fucknovelpia-webnovel",
       "name": "Novelpia Alt Source",
-      "version": "1.0.0",
+      "version": "1.3.2",
       "description": "Alternative webnovel parsing for protected archives",
       "contentType": "webnovels",
       "scriptUrl": "https://raw.githubusercontent.com/t3hkitty/generated-stuff/main/fucknovelpia.js",
