@@ -1,22 +1,22 @@
-function FuckNovelpiaSource() {
-    this.id = 'fucknovelpia-webnovel';
-    this.name = 'Novelpia Alt Source';
-    this.version = '1.3.2';
-    this.icon = 'https://novelpia.com/favicon.ico';
-    this.baseUrl = 'https://novelpia.com';
-    this.contentType = 'webnovels';
-    
-    this.capabilities = {
-        search: true,
-        discover: false,
-        download: true,
-        resolve: true,
-        bookChapters: true,
-        manga: false
-    };
-}
+var FuckNovelpiaSource = {};
 
-FuckNovelpiaSource.prototype.search = async function(query) {
+FuckNovelpiaSource.id = 'fucknovelpia-webnovel';
+FuckNovelpiaSource.name = 'Novelpia Alt Source';
+FuckNovelpiaSource.version = '1.7.0';
+FuckNovelpiaSource.icon = 'https://novelpia.com/favicon.ico';
+FuckNovelpiaSource.baseUrl = 'https://novelpia.com';
+FuckNovelpiaSource.contentType = 'webnovels';
+
+FuckNovelpiaSource.capabilities = {
+    search: true,
+    discover: false,
+    download: true,
+    resolve: true,
+    bookChapters: true,
+    manga: false
+};
+
+FuckNovelpiaSource.search = function(query, page) {
     return [
         {
             id: 'np-' + encodeURIComponent(query),
@@ -24,12 +24,12 @@ FuckNovelpiaSource.prototype.search = async function(query) {
             title: 'Novelpia Result: ' + query,
             url: 'https://novelpia.com/search?q=' + encodeURIComponent(query),
             coverUrl: 'https://novelpia.com/favicon.ico',
-            summary: 'Constructor prototype mapping for query: ' + query
+            summary: 'Object mapping for query: ' + query
         }
     ];
 };
 
-FuckNovelpiaSource.prototype.getBookChapters = async function(bookId) {
+FuckNovelpiaSource.getBookChapters = function(bookId) {
     return [
         {
             id: 'ch-1',
@@ -39,11 +39,11 @@ FuckNovelpiaSource.prototype.getBookChapters = async function(bookId) {
     ];
 };
 
-FuckNovelpiaSource.prototype.getBookChapter = async function(chapterId) {
+FuckNovelpiaSource.getBookChapter = function(chapterId) {
     return {
         title: 'Chapter 1: Protected Archive',
-        content: '<p>Decrypted text payload container ready for password-protected extraction.</p>'
+        content: '<p>Decrypted text payload container ready for extraction.</p>'
     };
 };
 
-__cinderExport = new FuckNovelpiaSource();
+__cinderExport = FuckNovelpiaSource;
